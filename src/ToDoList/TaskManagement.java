@@ -7,6 +7,7 @@ public class TaskManagement {
     String[] p = new String[100];
     Task t = new Task();
     Scanner sc = new Scanner(System.in);
+    //will use array list to store task name and a new array p to store its priority level.
     void addTask()
     {
         try{
@@ -27,15 +28,44 @@ public class TaskManagement {
                 return;
             }
             p[t.index] = t.priority[i];
-            System.out.println("enter the date here : ");
             t.index++;
-            System.out.println("Task and added successfully..");
+            System.out.println("Task added successfully..");
         }catch (InputMismatchException e)
         {
             System.out.println("invalid data entered.");
             sc.next();
         }
     }
+    //use to delete task by deleting its array list index and string p index 
+    void deleteTask()
+    {
+        if (t.TaskName.size() == 0) {
+            System.out.println("No task has been added.");
+            return;
+        }
+        viewTask();
+        try{
+        System.out.println("Enter the task number you want to delete it.");
+        int op = sc.nextInt() - 1;
+        sc.nextLine();
+        if (op < 0 || op >= t.TaskName.size()) {
+            System.out.println("Invalid task number.");
+            return;
+        }
+        t.TaskName.remove(op);
+        for (int i = op; i < t.index - 1; i++) {
+            p[i] = p[i + 1];
+        }
+        p[t.index - 1] = null;
+        t.index--;
+        System.out.println("Task removed successfully.");
+        }catch(InputMismatchException e)
+        {
+            System.out.println("Invalid data type, try again.");
+            sc.next();
+        }
+    }
+    //use to view task by simply printing it.
     void viewTask()
     {
         if(t.TaskName.size() == 0)
@@ -44,7 +74,59 @@ public class TaskManagement {
             return;
         }
         for (int i = 0; i < t.TaskName.size(); i++) {
-            System.out.println((i+1) + "Name : " + t.TaskName.get(i) + " Priority : " + p[i]);
+            System.out.println((i+1) + " Name : " + t.TaskName.get(i) + " Priority : " + p[i]);
+        }
+    }
+    //use to edit task.
+    void editTask()
+    {
+        viewTask();
+        if(t.TaskName.size() == 0)
+        {
+            System.out.println("No task has been added.");
+            return;
+        }
+        try{
+            System.out.println("Enter the task number you want to edit.");
+        int index = sc.nextInt()-1;
+        sc.nextLine();
+        if (index < 0 || index >= t.TaskName.size()) {
+            System.out.println("Invalid task number.");
+            return;
+        }
+        System.out.println("What do you want to edit ?");
+        System.out.println("1. Name.");
+        System.out.println("2. priority.");
+        int op =  sc.nextInt();
+        sc.nextLine();
+        if(op == 1)
+        {
+         System.out.println("Change the name here : ");
+        String name = sc.nextLine();
+        if (name.isEmpty()) {
+            System.out.println("Name cannot be empty, try again.");
+            return;
+        }
+        t.TaskName.set(op,name);
+        System.out.println("Name changed.");
+        } else if(op == 2)
+        {
+            t.viewPriority();
+            System.out.println("select the level you want to change it to.");
+            int pLevel = sc.nextInt() - 1;
+            sc.nextLine();
+            if (pLevel < 0 || pLevel >= t.priority.length) {
+                System.out.println("Invalid priority number.");
+                return;
+            }
+            p[index] = t.priority[pLevel];
+        } else {
+            System.out.println("Invalid option, try again.");
+        }
+        }catch(InputMismatchException e)
+        {
+            System.out.println("Invalid data type, try again");
+            sc.next();
         }
     }
 }

@@ -7,7 +7,7 @@ public class Main {
         while(true){
             try{
                 System.out.println("Menu : ");
-                System.out.println("1. Add Task\n2. View Tasks\n3. Exit");
+                System.out.println("1. Add Task\n2. View Tasks\n3. delete Tasks\n4. Edit Tasks\n5. exit");
                 System.out.print("Choose an option: ");
                 int choice = sc.nextInt();
                 sc.nextLine();
@@ -19,8 +19,14 @@ public class Main {
                         tm.viewTask();
                         break;
                     case 3:
-                        System.exit(0);
+                        tm.deleteTask();
                         break;
+                    case 4:
+                         tm.editTask();
+                         break;
+                    case 5 :
+                        System.exit(0);
+                        break;      
                     default:
                         System.out.println("Invalid option. Please try again.");
                 }
