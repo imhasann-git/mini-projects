@@ -18,6 +18,13 @@ public class TaskManagement {
                 System.out.println("Name cannot be empty, try again.");
                 return;
             }
+            System.out.println("Due date (dd-MM-yyyy): ");
+            String dueDate = sc.nextLine().trim();
+            if (dueDate.isEmpty()) {
+                System.out.println("Due date cannot be empty, try again.");
+                return;
+            }
+            t.dueDate.add(dueDate);
             t.TaskName.add(name);
             t.viewPriority();
             System.out.println("enter the priority number  here : ");
@@ -53,6 +60,7 @@ public class TaskManagement {
             return;
         }
         t.TaskName.remove(op);
+        t.dueDate.remove(op);
         for (int i = op; i < t.index - 1; i++) {
             p[i] = p[i + 1];
         }
@@ -74,7 +82,7 @@ public class TaskManagement {
             return;
         }
         for (int i = 0; i < t.TaskName.size(); i++) {
-            System.out.println((i+1) + " Name : " + t.TaskName.get(i) + " Priority : " + p[i]);
+            System.out.println((i + 1) + " Name: " + t.TaskName.get(i) + " Priority: " + p[i] + " Due Date: " + t.dueDate.get(i));
         }
     }
     //use to edit task.
@@ -97,6 +105,7 @@ public class TaskManagement {
         System.out.println("What do you want to edit ?");
         System.out.println("1. Name.");
         System.out.println("2. priority.");
+        System.out.println("3. Due Date");
         int op =  sc.nextInt();
         sc.nextLine();
         if(op == 1)
@@ -120,7 +129,17 @@ public class TaskManagement {
                 return;
             }
             p[index] = t.priority[pLevel];
-        } else {
+        }
+        else if (op == 3) {
+            System.out.println("Enter the new due date (dd-MM-yyyy): ");
+            String dueDate = sc.nextLine();
+            if (dueDate.isEmpty()) {
+                System.out.println("Due date cannot be empty, try again.");
+                return;
+            }
+            t.dueDate.set(index, dueDate);
+            System.out.println("Due date changed.");
+        }else {
             System.out.println("Invalid option, try again.");
         }
         }catch(InputMismatchException e)

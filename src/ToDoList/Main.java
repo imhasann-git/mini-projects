@@ -35,7 +35,6 @@ public class Main {
                 System.out.println("Invalid option entered, try again.");
                 sc.next();
             }
-            sc.close();
         }
     }
 }
