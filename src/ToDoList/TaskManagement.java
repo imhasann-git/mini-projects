@@ -116,7 +116,7 @@ public class TaskManagement {
             System.out.println("Name cannot be empty, try again.");
             return;
         }
-        t.TaskName.set(op,name);
+        t.TaskName.set(index,name);
         System.out.println("Name changed.");
         } else if(op == 2)
         {
