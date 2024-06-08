@@ -27,7 +27,7 @@ public class Account {
     public void deposit(double amt)
     {
         balance +=amt;
-        System.out.println("Successfully deposited in the account.");
+        System.out.println("Successfully deposited the amount");
     }
     public boolean withdraw(double amt)
     {
