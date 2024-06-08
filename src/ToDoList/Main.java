@@ -31,7 +31,8 @@ public class Main {
                     default:
                         System.out.println("Invalid option. Please try again.");
                 }
-            }catch (InputMismatchException e)
+            }
+            catch (InputMismatchException e)
             {
                 System.out.println("Invalid option entered, try again.");
                 sc.next();
