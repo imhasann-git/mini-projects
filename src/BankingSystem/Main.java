@@ -1,11 +1,12 @@
 package BankingSystem;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Main {
     private static Bank bank = new Account();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
-
+        try{
         while (!exit) {
             System.out.println("\nSimple Banking System");
             System.out.println("1. Add a new account");
@@ -44,9 +45,16 @@ public class Main {
         }
         sc.close();
     }
+    catch(InputMismatchException e)
+    {
+        System.out.println("Invalid input format. Please enter a valid numeric value.");
+        sc.next();
+    }
+    }
 
     // Add a new account
     private static void addAccount(Scanner sc) {
+        try{
         System.out.print("Enter the account holder's name: ");
         String name = sc.nextLine();
         System.out.print("Enter the initial deposit amount: ");
@@ -55,48 +63,70 @@ public class Main {
 
         String accountID = bank.addAccount(name, initialDeposit);
         System.out.println("Account created successfully. Account ID: " + accountID);
+        }catch(InputMismatchException e)
+        {
+            System.out.println("Invalid input format. Please enter a valid numeric value.");
+            sc.next();
+        }
     }
 
     // Deposit money
     private static void deposit(Scanner sc) {
-        System.out.print("Enter the account ID: ");
-        String id = sc.nextLine();
-        System.out.print("Enter the amount to deposit: ");
-        double amount = sc.nextDouble();
-        sc.nextLine(); // Consume the newline character
+        try {
+            System.out.print("Enter the account ID: ");
+            String id = sc.nextLine();
+            System.out.print("Enter the amount to deposit: ");
+            double amount = sc.nextDouble();
+            sc.nextLine(); // Consume the newline character
 
-        if (bank.deposit(id, amount)) {
-            System.out.println("Deposit successful.");
-        } else {
-            System.out.println("Account not found.");
+            if (bank.deposit(id, amount)) {
+                System.out.println("Deposit successful.");
+            } else {
+                System.out.println("Account not found.");
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            System.out.println("Invalid input format. Please enter a valid numeric value.");
+            sc.next();
         }
     }
 
     // Withdraw money
     private static void withdraw(Scanner sc) {
-        System.out.print("Enter the account ID: ");
-        String id = sc.nextLine();
-        System.out.print("Enter the amount to withdraw: ");
-        double amount = sc.nextDouble();
-        sc.nextLine(); // Consume the newline character
+        try {
+            System.out.print("Enter the account ID: ");
+            String id = sc.nextLine();
+            System.out.print("Enter the amount to withdraw: ");
+            double amount = sc.nextDouble();
+            sc.nextLine(); // Consume the newline character
 
-        if (bank.withdraw(id, amount)) {
-            System.out.println("Withdrawal successful.");
-        } else {
-            System.out.println("Account not found or insufficient funds.");
+            if (bank.withdraw(id, amount)) {
+                System.out.println("Withdrawal successful.");
+            } else {
+                System.out.println("Account not found or insufficient funds.");
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            System.out.println("Invalid input format. Please enter a valid numeric value.");
+        sc.next();
         }
     }
 
     // Check balance
     private static void checkBalance(Scanner sc) {
-        System.out.print("Enter the account ID: ");
-        String id = sc.nextLine();
+        try {
+            System.out.print("Enter the account ID: ");
+            String id = sc.nextLine();
 
-        double balance = bank.getBalance(id);
-        if (balance != -1) {
-            System.out.println("The account balance is: " + balance);
-        } else {
-            System.out.println("Account not found.");
+            double balance = bank.getBalance(id);
+            if (balance != -1) {
+                System.out.println("The account balance is: " + balance);
+            } else {
+                System.out.println("Account not found.");
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input format. Please enter a valid numeric value.");
+        sc.next();
         }
     }
     //Display details
@@ -107,3 +137,4 @@ public class Main {
         bank.display(id);
     }
 }
+
