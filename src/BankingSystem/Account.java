@@ -79,8 +79,16 @@ class Account implements  Bank {
     }
     //will use to send money to different accounts
     @Override
-    public void sendMoney(String ID)
+    public boolean sendMoney(String SenderID,String RID,double amt)
     {
-
+        int index = ids.indexOf(SenderID);
+        boolean isAvailable = false;
+        if(index != -1)
+        {
+            isAvailable = true;
+        } else {
+            isAvailable = false;
+        }
+        return isAvailable;
     }
 }

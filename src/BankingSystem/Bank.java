@@ -6,5 +6,5 @@ public interface Bank {
     boolean withdraw(String id, double amount);
     double getBalance(String id);
     void display(String ID);
-    void sendMoney(String ID);
+    boolean sendMoney(String SenderID,String RID,double amt);
 }

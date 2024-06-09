@@ -39,6 +39,9 @@ public class Main {
                     exit = true;
                     System.out.println("Thank you for using sbu");
                     break;
+                case 7:
+                    moneyTransfer(sc);
+                    break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
@@ -135,6 +138,24 @@ public class Main {
         System.out.println("Enter the account ID: ");
         String id = sc.nextLine();
         bank.display(id);
+    }
+    //money transfer
+    private static void moneyTransfer(Scanner sc)
+    {
+        System.out.println("Enter your ID");
+        String ID = sc.nextLine();
+        System.out.println("Enter reciever ID");
+        String RecieverID = sc.nextLine();
+        System.out.println("Enter the amount here : ");
+        double amt = sc.nextDouble();
+        if(bank.sendMoney(ID,RecieverID,amt))
+        {
+            bank.deposit(RecieverID,amt);
+            bank.withdraw(ID,amt);
+            System.out.println("Transaction successfull.");
+        } else {
+            System.out.println("Account not found.");
+        }
     }
 }
 
