@@ -77,4 +77,10 @@ class Account implements  Bank {
             System.out.println("Account not exist.");
         }
     }
+    //will use to send money to different accounts
+    @Override
+    public void sendMoney(String ID)
+    {
+
+    }
 }
