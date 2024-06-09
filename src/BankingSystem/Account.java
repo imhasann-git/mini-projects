@@ -2,9 +2,9 @@ package BankingSystem;
 import java.util.ArrayList;
 import java.util.*;
 class Account implements  Bank {
-    private ArrayList<String> ids;
-    private ArrayList<String> names;
-    private ArrayList<Double> balances;
+    private final ArrayList<String> ids;
+    private final ArrayList<String>  names;
+    private final ArrayList<Double> balances;
     private static int accountCnt;
     Random r = new Random();
     // Constructor
@@ -19,6 +19,7 @@ class Account implements  Bank {
     public String createID(String name) {
         int R = r.nextInt(1000);
         String id = String.format("%05d%05d", R,++accountCnt);
+        id = name + id;
         return id;
     }
 
