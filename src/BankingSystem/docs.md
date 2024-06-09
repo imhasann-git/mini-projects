@@ -1,3 +1,6 @@
+Here is the updated documentation for your Banking System. I've incorporated the new money transfer feature and ensured the documentation accurately reflects the current state of your system.
+
+```markdown
 # Banking System Documentation
 
 ## Table of Contents
@@ -10,7 +13,7 @@
 7. [Summary](#summary)
 
 ## Introduction
-This simple banking system provides functionalities for creating accounts, depositing and withdrawing money, checking balances, and displaying account details. The system is implemented using three main components:
+This simple banking system provides functionalities for creating accounts, depositing and withdrawing money, checking balances, transferring money, and displaying account details. The system is implemented using three main components:
 - `Account` class
 - `Bank` interface
 - `Main` class
@@ -61,6 +64,11 @@ The `Account` class implements the `Bank` interface and manages account data inc
   public void display(String ID)
   ```
 
+- **sendMoney(String senderID, String receiverID, double amount)**: Transfers money from one account to another. Returns true if successful, otherwise false.
+  ```java
+  public boolean sendMoney(String senderID, String receiverID, double amount)
+  ```
+
 ## Bank Interface
 The `Bank` interface defines the contract for the banking operations.
 
@@ -88,6 +96,11 @@ The `Bank` interface defines the contract for the banking operations.
 - **display(String ID)**: Displays the details of the specified account.
   ```java
   void display(String ID);
+  ```
+
+- **sendMoney(String senderID, String receiverID, double amount)**: Transfers money from one account to another.
+  ```java
+  boolean sendMoney(String senderID, String receiverID, double amount);
   ```
 
 ## Main Class
@@ -122,9 +135,19 @@ The `Main` class contains the entry point for the banking system and provides a 
   private static void checkBalance(Scanner sc)
   ```
 
-- **display(Scanner sc)**: Prompts the user to display the details of an account.
+- **displayDetails(Scanner sc)**: Prompts the user to display the details of an account.
   ```java
-  private static void display(Scanner sc)
+  private static void displayDetails(Scanner sc)
+  ```
+
+- **moneyTransfer(Scanner sc)**: Prompts the user to transfer money from one account to another.
+  ```java
+  private static void moneyTransfer(Scanner sc)
+  ```
+
+- **displayMenu()**: Displays the menu options to the user.
+  ```java
+  private static void displayMenu()
   ```
 
 ## Usage
@@ -138,10 +161,15 @@ The `Main` class contains the entry point for the banking system and provides a 
     - Withdraw money: Enter the account ID and the amount to withdraw.
     - Check balance: Enter the account ID to view the balance.
     - Display details: Enter the account ID to view account details.
+    - Transfer money: Enter your account ID, the receiver's account ID, and the amount to transfer.
 
 ## Error Handling
 - Input validation is performed for numeric values to ensure proper data entry.
 - If invalid input is detected, an error message is displayed and the user is prompted to enter the input again.
+- Errors such as invalid account IDs or insufficient funds are handled with appropriate messages to the user.
 
 ## Summary
-This simple banking system provides basic functionalities for managing bank accounts, including creating accounts, depositing and withdrawing money, checking balances, and displaying account details. The `Account` class implements the `Bank` interface, while the `Main` class provides a user-friendly interface for interacting with the system. Error handling is implemented to manage invalid inputs gracefully.
+This simple banking system provides basic functionalities for managing bank accounts, including creating accounts, depositing and withdrawing money, checking balances, transferring money, and displaying account details. The `Account` class implements the `Bank` interface, while the `Main` class provides a user-friendly interface for interacting with the system. Error handling is implemented to manage invalid inputs gracefully.
+```
+
+This updated documentation includes the new `sendMoney` method in both the `Account` class and the `Bank` interface, and it provides a detailed description of the `moneyTransfer` method in the `Main` class. It also ensures that all methods and functionalities are clearly explained and that the usage instructions are easy to follow.
