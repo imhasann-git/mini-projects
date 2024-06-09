@@ -14,7 +14,8 @@ public class Main {
             System.out.println("3. Withdraw money");
             System.out.println("4. Check balance");
             System.out.println("5. Display details");
-            System.out.println("6. Exit");
+            System.out.println("6. Money Transfer");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine(); // Consume the newline character
@@ -35,13 +36,13 @@ public class Main {
                 case 5:
                     display(sc);
                     break;
-                    case 6:
-                    exit = true;
-                    System.out.println("Thank you for using sbu");
-                    break;
-                case 7:
+                case 6:
                     moneyTransfer(sc);
                     break;
+                case 7:
+                exit = true;
+                System.out.println("Thank you for using SBS");
+                break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
@@ -150,9 +151,14 @@ public class Main {
         double amt = sc.nextDouble();
         if(bank.sendMoney(ID,RecieverID,amt))
         {
-            bank.deposit(RecieverID,amt);
-            bank.withdraw(ID,amt);
-            System.out.println("Transaction successfull.");
+            if(bank.withdraw(ID,amt))
+            {
+                bank.deposit(RecieverID,amt);
+                System.out.println("Transaction successfull.");
+            }
+            else {
+                System.out.println("Insufficient funds");
+            }
         } else {
             System.out.println("Account not found.");
         }
