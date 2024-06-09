@@ -1,40 +1,147 @@
-Sure! Here's a roadmap you can follow to implement the simple banking system:
+# Banking System Documentation
 
-### Roadmap to Implement Simple Banking System
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Account Class](#account-class)
+3. [Bank Interface](#bank-interface)
+4. [Main Class](#main-class)
+5. [Usage](#usage)
+6. [Error Handling](#error-handling)
+7. [Summary](#summary)
 
-1. **Define the Account Class:**
-   - Create a class named `Account`.
-   - Define private fields for account number, account holder name, and balance.
-   - Implement setter and getter methods for these fields to encapsulate access to the class attributes.
-   - Implement methods to deposit, withdraw, and check the account balance.
+## Introduction
+This simple banking system provides functionalities for creating accounts, depositing and withdrawing money, checking balances, and displaying account details. The system is implemented using three main components:
+- `Account` class
+- `Bank` interface
+- `Main` class
 
-2. **Create the Main Class:**
-   - Create a class named `SimpleBankingSystem` as the main class.
-   - Declare an `ArrayList` to store account objects.
-   - Implement a `main` method to serve as the entry point for the application.
+## Account Class
+The `Account` class implements the `Bank` interface and manages account data including account IDs, names, and balances.
 
-3. **Implement Account Management Functions:**
-   - Implement a method to create a new account:
-     - Prompt the user to enter the account holder name and initial balance.
-     - Generate a unique account number for the new account.
-     - Create an `Account` object with the provided details and add it to the `ArrayList` of accounts.
-   - Implement methods to deposit and withdraw money:
-     - Prompt the user to enter the account number and amount to deposit/withdraw.
-     - Find the account with the provided account number.
-     - Call the deposit/withdraw method of the account object.
-   - Implement a method to check the account balance:
-     - Prompt the user to enter the account number.
-     - Find the account with the provided account number.
-     - Display the account details including the current balance.
+### Attributes
+- `ids`: ArrayList<String> - Stores account IDs.
+- `names`: ArrayList<String> - Stores account holder names.
+- `balances`: ArrayList<Double> - Stores account balances.
+- `accountCnt`: static int - Counts the number of accounts created.
+- `r`: Random - Random number generator for creating account IDs.
 
-4. **Implement User Interface:**
-   - Inside the `main` method, use a loop to repeatedly display a menu of options and prompt the user to choose an action.
-   - Display options for creating an account, depositing money, withdrawing money, checking balance, and exiting the program.
-   - Based on the user's choice, call the corresponding account management function.
+### Methods
+- **Constructor**: Initializes the attributes.
+  ```java
+  public Account()
+  ```
 
-5. **Test the Application:**
-   - Thoroughly test each functionality to ensure that the application works as expected.
-   - Test creating accounts, depositing and withdrawing money, and checking balances.
-   - Test edge cases such as depositing/withdrawing negative amounts, withdrawing more than the available balance, etc.
+- **createID(String name)**: Creates a unique account ID.
+  ```java
+  public String createID(String name)
+  ```
 
-Following this roadmap will guide you through the implementation of the simple banking system step by step. It's important to test your code at each stage to ensure correctness and functionality.
+- **addAccount(String name, double initialDeposit)**: Adds a new account and returns the account ID.
+  ```java
+  public String addAccount(String name, double initialDeposit)
+  ```
+
+- **deposit(String id, double amount)**: Deposits money into the specified account. Returns true if successful, otherwise false.
+  ```java
+  public boolean deposit(String id, double amount)
+  ```
+
+- **withdraw(String id, double amount)**: Withdraws money from the specified account. Returns true if successful, otherwise false.
+  ```java
+  public boolean withdraw(String id, double amount)
+  ```
+
+- **getBalance(String id)**: Returns the balance of the specified account. Returns -1 if the account is not found.
+  ```java
+  public double getBalance(String id)
+  ```
+
+- **display(String ID)**: Displays the details of the specified account.
+  ```java
+  public void display(String ID)
+  ```
+
+## Bank Interface
+The `Bank` interface defines the contract for the banking operations.
+
+### Methods
+- **addAccount(String name, double initialDeposit)**: Adds a new account and returns the account ID.
+  ```java
+  String addAccount(String name, double initialDeposit);
+  ```
+
+- **deposit(String id, double amount)**: Deposits money into the specified account.
+  ```java
+  boolean deposit(String id, double amount);
+  ```
+
+- **withdraw(String id, double amount)**: Withdraws money from the specified account.
+  ```java
+  boolean withdraw(String id, double amount);
+  ```
+
+- **getBalance(String id)**: Gets the balance of the specified account.
+  ```java
+  double getBalance(String id);
+  ```
+
+- **display(String ID)**: Displays the details of the specified account.
+  ```java
+  void display(String ID);
+  ```
+
+## Main Class
+The `Main` class contains the entry point for the banking system and provides a user interface for interacting with the system.
+
+### Attributes
+- `bank`: static Bank - An instance of the `Account` class.
+
+### Methods
+- **main(String[] args)**: The main method that runs the banking system.
+  ```java
+  public static void main(String[] args)
+  ```
+
+- **addAccount(Scanner sc)**: Prompts the user to add a new account.
+  ```java
+  private static void addAccount(Scanner sc)
+  ```
+
+- **deposit(Scanner sc)**: Prompts the user to deposit money into an account.
+  ```java
+  private static void deposit(Scanner sc)
+  ```
+
+- **withdraw(Scanner sc)**: Prompts the user to withdraw money from an account.
+  ```java
+  private static void withdraw(Scanner sc)
+  ```
+
+- **checkBalance(Scanner sc)**: Prompts the user to check the balance of an account.
+  ```java
+  private static void checkBalance(Scanner sc)
+  ```
+
+- **display(Scanner sc)**: Prompts the user to display the details of an account.
+  ```java
+  private static void display(Scanner sc)
+  ```
+
+## Usage
+1. **Running the System**:
+    - Compile and run the `Main` class.
+    - Follow the on-screen prompts to interact with the system.
+
+2. **Options**:
+    - Add a new account: Enter the account holder's name and the initial deposit amount.
+    - Deposit money: Enter the account ID and the amount to deposit.
+    - Withdraw money: Enter the account ID and the amount to withdraw.
+    - Check balance: Enter the account ID to view the balance.
+    - Display details: Enter the account ID to view account details.
+
+## Error Handling
+- Input validation is performed for numeric values to ensure proper data entry.
+- If invalid input is detected, an error message is displayed and the user is prompted to enter the input again.
+
+## Summary
+This simple banking system provides basic functionalities for managing bank accounts, including creating accounts, depositing and withdrawing money, checking balances, and displaying account details. The `Account` class implements the `Bank` interface, while the `Main` class provides a user-friendly interface for interacting with the system. Error handling is implemented to manage invalid inputs gracefully.
