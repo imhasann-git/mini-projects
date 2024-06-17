@@ -110,7 +110,6 @@ public class Main {
                 System.out.println("Account not found or insufficient funds.");
             }
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             System.out.println("Invalid input format. Please enter a valid numeric value.");
         sc.next();
         }
