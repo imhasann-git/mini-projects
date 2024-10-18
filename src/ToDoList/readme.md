@@ -68,7 +68,7 @@ You can select an option by entering the corresponding number and following the 
 
 If you have any questions or need further assistance, you can reach out to me via Twitter or email.
 
-- **Twitter**: [@Naumanxaim0](https://x.com/Naumanxaim0)
+- **Twitter**: [@Naumanxaim0](https://x.com/9manhasan_)
 - **Email**: workwithnauman@gmail.com
 
 ---
