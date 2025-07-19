@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Env files
+.env
+.env.*
+
+# Logs
+*.log
+
+# Byte-compiled / optimized / DLL files
+*.so
+
+# Database dumps
+*.sql
+
+# Pytest / coverage
+htmlcov/
+.coverage
+.cache/
+.pytest_cache/
+
+# MySQL connector cache (if any)
+__mysqlcache__/
+
+# Misc
+*.bak
+*.swp
