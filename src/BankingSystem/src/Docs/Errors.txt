@@ -1,0 +1,5 @@
+[2025-07-19 13:26:42] ❌ ERROR: Failed to load MySQL plugin using URL: mysql://...  
+[2025-07-19 13:26:42] 💡 FIX: Use 'mysql+mysqlconnector://' instead for SQLAlchemy to detect the correct driver.
+[2025-07-20 15:12:45] ❌ ERROR in create_users_info_table:
+TypeError: Argument of type 'str' is not assignable to parameter 'Executable'
+Hint: Wrap your SQL string with sqlalchemy.text() before passing to connection.execute().
