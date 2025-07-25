@@ -100,18 +100,18 @@ def create_transactions_info_table(connection: Connection):
     query = '''
         CREATE TABLE IF NOT EXISTS transactions_info(
             transaction_id INT PRIMARY KEY AUTO_INCREMENT,
-            sender_user_id VARCHAR(15) NOT NULL,
-            receiver_user_id VARCHAR(15) NOT NULL,
+            sender_user_id VARCHAR(15),
+            receiver_user_id VARCHAR(15),
             amount DECIMAL(15, 2) NOT NULL,
             transaction_type ENUM('deposit', 'withdrawal', 'transfer') NOT NULL,
             transaction_status ENUM('in_progress', 'completed', 'cancelled') DEFAULT 'in_progress',
             reference_id VARCHAR(255) NOT NULL,
             timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (sender_user_id) REFERENCES users_info(user_id)
-                ON DELETE CASCADE
+                ON DELETE SET NULL
                 ON UPDATE CASCADE,
             FOREIGN KEY (receiver_user_id) REFERENCES users_info(user_id)
-                ON DELETE CASCADE
+                ON DELETE SET NULL
                 ON UPDATE CASCADE
         );
     '''
@@ -121,6 +121,7 @@ def create_transactions_info_table(connection: Connection):
         logger.info("[transactions_info] Table created or already exists.")
     except SQLAlchemyError as e:
         logger.error(f"[transactions_info] Table creation failed: {str(e)}")
+
 
 
 # --- Insert Functions ---
