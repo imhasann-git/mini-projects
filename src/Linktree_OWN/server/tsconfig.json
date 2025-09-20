@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    // Environment setup
+    "target": "ES2020", // good balance for Node/Bun runtime
+    "module": "CommonJS", // or "ESNext" if you're running ESM
+    "lib": ["ESNext"],
+
+    // Output
+    "outDir": "./dist", // compiled output folder
+    "rootDir": "./src", // where your TS source lives
+    "noEmit": false, // actually emit JS files
+    "esModuleInterop": true, // allow default imports from CJS
+    "resolveJsonModule": true, // import JSON if needed
+    "sourceMap": true, // helpful for debugging
+
+    // Module resolution
+    "moduleResolution": "node", // use classic Node-like module lookup
+    "allowJs": true, // compile .js along with .ts
+    "allowSyntheticDefaultImports": true,
+
+    // Strictness & safety
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    // Less strict (configurable)
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false
+  },
+  "include": ["src/**/*"], // compile everything in src/
+  "exclude": ["node_modules", "dist"] // don't compile deps or output
+}
